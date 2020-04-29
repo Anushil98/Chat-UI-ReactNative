@@ -25,15 +25,10 @@ export default class Message{
         }
     }
     getMessages = (user,receiver) => {
-        return [...(this.message[user].filter(message => message[receiver]==receiver)),
-        ...(this.message[receiver].filter(message => message[receiver]==user))]
+        return [...(this.message[user].filter(message => message["receiver"]==receiver)),
+        ...(this.message[receiver].filter(message => message["receiver"]==user))]
     }
     addMessage = (user,receiver,message) => {
-        this.message[user].push({
-        id:this.id++,
-        message:this.message,
-        receiver:receiver
-        })
+        this.message[user]=[...this.message[user],{id:this.id++,message:message,receiver:receiver}]
     }
-
 }

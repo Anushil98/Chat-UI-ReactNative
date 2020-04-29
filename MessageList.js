@@ -10,20 +10,15 @@ export default class MessageList extends React.Component{
 
     constructor(props){
         super(props)
-        this.state={
-            user: props.user,
-            receiver: props.receiver
-        }
-        console.log(props.messageObject+"From messageList")
-        this.messageObject = props.messageObject
-        this.messages = messageObject.getMessages(prop.user,prop.receiver)
+        console.log("constructing messageList")
     }
     render(){
+    console.log(this.props.messages)
     return(
     <FlatList
-        data={this.messages}
-        renderItem={({ item }) => <Text>item.message</Text>}
-        keyExtractor={item => item.id}
+        data={this.props.messages}
+        renderItem={({ item }) => <Text>{item.message}</Text>}
+        keyExtractor={item => item.id.toString()}
     />
     )
     }
