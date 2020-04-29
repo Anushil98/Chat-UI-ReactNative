@@ -14,6 +14,9 @@ export default class App extends React.Component{
     this.messageObject = new Message
     console.log(this.messageObject+"From App.js constructor")
     }
+    this.addMessage = () => {
+        this.messageObject
+    }
     render(){
 
         return (
