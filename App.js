@@ -31,7 +31,9 @@ export default class App extends React.Component{
         return (
         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{borderWidth:1}}>
             <View style={{borderWidth:1,marginTop:50}}>
+                <View>
                 <Text>{this.state.receiver}</Text>
+                </View>
             </View>
             <View style={{borderWidth:1}}>
                 <MessageList messages={this.state.messages}/>
