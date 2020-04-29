@@ -1,8 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import Message from "./Message.js";
 import MessageList from "./MessageList.js";
 import UserInput from "./UserInput.js";
+import Constants from 'expo-constants';
+import {Dimensions} from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default class App extends React.Component{
 
@@ -26,22 +31,27 @@ export default class App extends React.Component{
     }
 
     render(){
-        console.log("Re rendering")
-        console.log(this.state.messages)
         return (
-        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{borderWidth:1}}>
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{borderWidth:1,height:windowHeight}}>
+
+
+        <View style={{borderWidth:1,height:windowHeight*0.855}}>
             <View style={{borderWidth:1,marginTop:50}}>
                 <View>
                 <Text>{this.state.receiver}</Text>
                 </View>
             </View>
-            <View style={{borderWidth:1}}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View>
                 <MessageList messages={this.state.messages}/>
             </View>
-            <View style={{borderWidth:1}}>
-                <Text>hola</Text>
-                <UserInput addMessageFunc={this.addMessage} />
-            </View>
+            </TouchableWithoutFeedback>
+        </View>
+
+        <View>
+              <UserInput addMessageFunc={this.addMessage} />
+        </View>
+
         </KeyboardAvoidingView>
         )
     }

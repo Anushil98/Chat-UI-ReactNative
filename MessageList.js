@@ -13,13 +13,14 @@ export default class MessageList extends React.Component{
         console.log("constructing messageList")
     }
     render(){
-    console.log(this.props.messages)
     return(
+    <View style={{borderWidth:1}}>
     <FlatList
         data={this.props.messages}
         renderItem={({ item }) => <Text>{item.message}</Text>}
         keyExtractor={item => item.id.toString()}
     />
+    </View>
     )
     }
 }
