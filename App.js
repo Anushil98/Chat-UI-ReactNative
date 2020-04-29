@@ -32,18 +32,18 @@ export default class App extends React.Component{
 
     render(){
         return (
-        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{borderWidth:1,height:windowHeight}}>
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{borderWidth:1,height:windowHeight,justifyContent:'space-around'}}>
 
-
-        <View style={{borderWidth:1,height:windowHeight*0.855}}>
-            <View style={{borderWidth:1,marginTop:50}}>
+        <View style={{borderWidth:1}}>
                 <View>
                 <Text>{this.state.receiver}</Text>
                 </View>
-            </View>
+        </View>
+        <View style={{borderWidth:1}}>
+
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View>
-                <MessageList messages={this.state.messages}/>
+                <MessageList user={this.state.user} messages={this.state.messages}/>
             </View>
             </TouchableWithoutFeedback>
         </View>
