@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView,
+    TouchableWithoutFeedback,Keyboard,Image } from 'react-native';
+
 import Message from "./Message.js";
 import MessageList from "./MessageList.js";
 import UserInput from "./UserInput.js";
@@ -9,15 +11,16 @@ import {Dimensions} from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+
 export default class App extends React.Component{
 
     constructor(props){
     super(props)
     this.messageObject = new Message
     this.state={
-    user:"user1",
-    receiver:"user2",
-    messages: this.messageObject.getMessages("user1","user2")
+    user:"Anushil",
+    receiver:"Anurima",
+    messages: this.messageObject.getMessages("Anushil","Anurima")
     }
     }
 
@@ -28,39 +31,66 @@ export default class App extends React.Component{
         receiver:prevState.receiver,
         messages: [...this.messageObject.getMessages(prevState.user,prevState.receiver)]
         }))
+
     }
 
     render(){
         return (
-        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{borderWidth:1,height:windowHeight,justifyContent:'space-around'}}>
-
-        <View style={{borderWidth:1}}>
+        <View style={styles.container}>
+        <View style={styles.header}>
+            <View style={{marginLeft:10,flexDirection:'row'}}>
+                <Image style={styles.user} source={require('./assets/femaleUser.png')}/>
                 <View>
-                <Text>{this.state.receiver}</Text>
+                <Text style={styles.receiver}>{this.state.receiver}</Text>
                 </View>
+            </View>
         </View>
-        <View style={{borderWidth:1}}>
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "padding"} style={styles.messageArea} keyboardVerticalOffset={-500}>
+        <Image style={{position:'absolute'}} source={require('./assets/defaultwallpaper.png')}/>
+        <View style={styles.messageList}>
 
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View>
                 <MessageList user={this.state.user} messages={this.state.messages}/>
             </View>
-            </TouchableWithoutFeedback>
         </View>
-
-        <View>
+        <View style={styles.input}>
               <UserInput addMessageFunc={this.addMessage} />
         </View>
-
         </KeyboardAvoidingView>
+        </View>
         )
     }
 }
+const seagreen='#2e8b57'
+const azure ='#f0ffff'
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  marginTop:Constants.statusBarHeight,
+  flex:1,
+  backgroundColor:seagreen
   },
+  header:{
+  justifyContent:'center',
+  width:windowWidth,
+  height:70
+  },user:{
+  width:65,
+  height:50,
+  borderRadius:2000,
+  resizeMode:'contain',
+  },
+  receiver:{
+  top:5,
+  fontSize:25,
+  color:azure
+  },
+  messageArea:{
+  flex:1,
+  justifyContent:'space-between',
+  },
+  messageList:{
+  flex:6
+  },
+  input:{
+  }
 });

@@ -2,26 +2,26 @@ export default class Message{
     constructor(){
         this.id=0
         this.message={
-        "user1":[{id: this.id++,
+        "Anushil":[{id: this.id++,
         message: "Hi2",
-        receiver: "user2"
+        receiver: "Anurima"
         },{id: this.id++,
         message: "hello2",
-        receiver: "user2"
+        receiver: "Anurima"
         },{id: this.id++,
         message: "Ssup2",
-        receiver: "user2"
+        receiver: "Anurima"
         }],
-        "user2":[{
+        "Anurima":[{
         id: this.id++,
         message: "Hi1",
-        receiver: "user1"
+        receiver: "Anushil"
         },{id: this.id++,
         message: "Hello1",
-        receiver: "user1"
+        receiver: "Anushil"
         },{id: this.id++,
         message: "Hi1",
-        receiver: "user1"}]
+        receiver: "Anushil"}]
         }
     }
     getMessages = (user,receiver) => {

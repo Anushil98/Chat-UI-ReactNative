@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AwesomeProject2",
-    "slug": "AwesomeProject2",
+    "name": "ChatUi",
+    "slug": "chatui",
     "platforms": [
       "ios",
       "android",
@@ -23,6 +23,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }
