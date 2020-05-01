@@ -5,9 +5,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start'
         },
-        messagebox:{
-        borderWidth:1,
-        flexDirection:'row'
+        messageboxuser:{
+        flexDirection:'row',
+        justifyContent:'flex-end',
+        margin:5,
+        },
+        messageboxreceiver:{
+        flexDirection:'row',
+        justifyContent:'flex-start',
+        margin:5
+        },
+        receiverTextArea:{
+        backgroundColor:'#f0ffff',
+        padding:15,
+        borderRadius:10,
+        borderBottomRightRadius:-10
+        },
+        userTextArea:{
+        backgroundColor:'#C1F09B',
+        padding:15,
+        borderRadius:10,
+        borderBottomRightRadius:-10
         }
     })
 export default class MessageList extends React.Component{
@@ -18,12 +36,15 @@ export default class MessageList extends React.Component{
     }
     render(){
     return(
-    <View style={{borderWidth:1}}>
+    <View>
     <FlatList
         data={this.props.messages}
         renderItem={({ item }) =>
-        <View style={[styles.messagebox,{justifyContent:this.props.user==item.receiver?'flex-start':'flex-end'}]}>
-        <Text>{item.message}</Text></View>
+        <View style={this.props.user==item.receiver?styles.messageboxreceiver:styles.messageboxuser}>
+        <View style={this.props.user==item.receiver?styles.receiverTextArea:styles.userTextArea}>
+        <Text>{item.message}</Text>
+        </View>
+        </View>
         }
         keyExtractor={item => item.id.toString()}
     />
