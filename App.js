@@ -40,6 +40,7 @@ export default class App extends React.Component{
     }
     render(){
         if(this.state.user==''){
+        alert("Select any one user to replicate experience!!")
         return (
         <View style={styles.mainContainer}>
             <View style={styles.mainAppHeader}>
@@ -51,10 +52,10 @@ export default class App extends React.Component{
             </View>
             <View style={styles.userList}>
             <View style={{height:70,padding:10,borderBottomWidth:1,justifyContent:'center'}}>
-            <TouchableOpacity onPress={()=>this.changeUser('Anurima','Anushil')}><Text>Anushil</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>this.changeUser('Anurima','Anushil')}><Text>Anurima</Text></TouchableOpacity>
             </View>
             <View style={{height:70,padding:10,borderBottomWidth:1,justifyContent:'center'}}>
-            <TouchableOpacity onPress={()=>this.changeUser('Anushil','Anurima')}><Text>Anurima</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>this.changeUser('Anushil','Anurima')}><Text>Anushil</Text></TouchableOpacity>
             </View>
             </View>
         </View>
