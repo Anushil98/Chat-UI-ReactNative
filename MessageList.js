@@ -34,11 +34,16 @@ export default class MessageList extends React.Component{
         super(props)
         console.log("constructing messageList")
     }
+    scrollToIndex = () => {
+      this.flatListRef.scrollToIndex({animated: true, index: 3});
+    }
     render(){
     return(
     <View>
     <FlatList
-        data={this.props.messages}
+        ref={(ref) => { this.flatListRef = ref; }}
+        inverted={true}
+        data={this.props.messages.reverse()}
         renderItem={({ item }) =>
         <View style={this.props.user==item.receiver?styles.messageboxreceiver:styles.messageboxuser}>
         <View style={this.props.user==item.receiver?styles.receiverTextArea:styles.userTextArea}>
